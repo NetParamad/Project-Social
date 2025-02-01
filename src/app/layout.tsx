@@ -7,16 +7,13 @@ import Sidebar from "@/components/Sidebar";
 import { Toaster } from "react-hot-toast";
 import ClerkProviderWrapper from "@/providers/ClerkProvider";
 
-import { SWRConfig } from "swr";
-
-
 const projectSocial = localFont({
   src: "/fonts/NotoSansThai.ttf",
 });
 
 export const metadata: Metadata = {
   title: "Social",
-  description: "A modern social media application powered by Next.js",
+  description: "This is a social media app",
 };
 
 export default function RootLayout({
@@ -28,29 +25,27 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${projectSocial.className} antialiased`}>
         <ClerkProviderWrapper>
-          <SWRConfig value={{ revalidateOnMount: false }}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <div className="min-h-screen">
-                <Navbar />
-                <main className="py-8">
-                  <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                      <div className="hidden lg:block lg:col-span-3">
-                        <Sidebar />
-                      </div>
-                      <div className="lg:col-span-9">{children}</div>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="min-h-screen">
+              <Navbar />
+              <main className="py-8">
+                <div className="max-w-7xl mx-auto px-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="hidden lg:block lg:col-span-3">
+                      <Sidebar />
                     </div>
+                    <div className="lg:col-span-9">{children}</div>
                   </div>
-                </main>
-              </div>
-              <Toaster />
-            </ThemeProvider>
-          </SWRConfig>
+                </div>
+              </main>
+            </div>
+            <Toaster />
+          </ThemeProvider>
         </ClerkProviderWrapper>
       </body>
     </html>
